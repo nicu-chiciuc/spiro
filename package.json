@@ -2,11 +2,10 @@
   "name": "spiro",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "build": "node ./scripts/build.ts",
-    "deploy": "node ./scripts/deploy-cloudflare.ts deploy",
-    "deploy:preview": "node ./scripts/deploy-cloudflare.ts preview"
+    "build": "echo \"No build required\"",
+    "deploy": "wrangler deploy",
+    "deploy:preview": "wrangler versions upload"
   },
   "devDependencies": {
     "wrangler": "4.123.0"

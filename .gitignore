@@ -1,7 +1,1 @@
 .DS_Store
-*.log
-*.local
-.env*
-.wrangler
-dist
-node_modules
