@@ -10,35 +10,29 @@ This allows the creation of different interesting pictures.
 The algorithm itself isn't very hard.
 The biggest problem was creating a easy-to-use interface and also smoothing the curve by adding multiple points if the rotation is too fast.
 
-The application doesn't use any build system.
+The browser application doesn't use a framework or bundler.
 
 ## Samebase deployment
 
-The application source remains the original static HTML and canvas code. The repository now adds a
+The application source remains the original static HTML and canvas code. The repository adds only a
 portable build and deployment contract for Samebase and Cloudflare Workers Static Assets; it does
 not add a backend, authentication, server routes, or application data.
 
-Install dependencies and start the local Vite+ server:
+Install dependencies and create the exact three-file provider artifact:
 
 ```sh
-vp install
-vp dev
-```
-
-Run the complete validation and provider build with:
-
-```sh
-vp run check
-vp run build
+pnpm install
+pnpm run build
 ```
 
 Cloudflare Workers Builds runs `pnpm run build`, followed by `pnpm run deploy` for `master` or
 `pnpm run deploy:preview` for non-production branches. The Worker name is supplied by Workers
 Builds and is intentionally not committed to `wrangler.jsonc`.
 
-`index.html` remains the original browser application and is excluded from automated formatting and
-linting so migration-only reviews do not contain a behavior-risking source rewrite.
-`dat.gui.min.new.js` and `stats.min.js` are the unchanged, required browser artifacts from the
-original application. They remain at their GitHub Pages paths and are copied into the Cloudflare
-build output. They remain minified JavaScript and share that tooling exception so the migration
-preserves the existing interface and runtime behavior.
+The build copies only `index.html`, `dat.gui.min.new.js`, and `stats.min.js` into `dist/client`.
+Repository documentation, package metadata, and deployment configuration are therefore not public
+assets. Missing paths return 404 instead of falling back to the application HTML.
+
+The three browser files remain unchanged at their existing GitHub Pages paths. The two scripts stay
+as minified JavaScript because they are the original required browser artifacts, not authored build
+or deployment code.
