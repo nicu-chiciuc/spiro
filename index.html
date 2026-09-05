@@ -2,12 +2,17 @@
 	<html>
 	<head>
 		<style>
+			.dg.main li.samebase-attribution-row {
+				height: auto;
+				padding: 0;
+				border: 0;
+			}
 			.samebase-attribution {
 				display: flex;
 				align-items: center;
 				gap: 8px;
 				min-height: 44px;
-				padding: 8px 10px;
+				padding: 0 10px;
 				color: #eee;
 				background: #1a1a1a;
 				font: 11px Arial, sans-serif;
@@ -222,7 +227,11 @@
 		logo.height = 16;
 		attribution.appendChild(logo);
 		attribution.appendChild(document.createTextNode('Samebase'));
-		tgui.domElement.appendChild(attribution);
+		var attributionRow = document.createElement('li');
+		attributionRow.className = 'samebase-attribution-row';
+		attributionRow.appendChild(attribution);
+		tgui.__ul.appendChild(attributionRow);
+		tgui.onResize();
 
 		return tgui;
 	}
