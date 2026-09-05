@@ -185,6 +185,26 @@
 
 		tgui.add(controls, 'random');
 
+		var attribution = document.createElement('a');
+		attribution.href = 'https://samebase.com';
+		attribution.target = '_blank';
+		attribution.rel = 'noreferrer';
+		attribution.textContent = 'Managed with ';
+		attribution.style.cssText = 'display:flex;align-items:center;gap:8px;min-height:44px;padding:8px 10px;color:#394447;background:#fff;text-decoration:none;font:14px system-ui,sans-serif;';
+		attribution.addEventListener('mouseenter', function(){ attribution.style.textDecoration = 'underline'; });
+		attribution.addEventListener('mouseleave', function(){ attribution.style.textDecoration = 'none'; });
+		attribution.addEventListener('focus', function(){ attribution.style.outline = '2px solid #216eaa'; });
+		attribution.addEventListener('blur', function(){ attribution.style.outline = 'none'; });
+		var logo = document.createElement('img');
+		logo.src = 'samebase.svg';
+		logo.alt = '';
+		logo.setAttribute('aria-hidden', 'true');
+		logo.width = 16;
+		logo.height = 16;
+		attribution.appendChild(logo);
+		attribution.appendChild(document.createTextNode('Samebase'));
+		tgui.domElement.appendChild(attribution);
+
 		return tgui;
 	}
 
@@ -507,4 +527,3 @@
 
 	</body>
 	</html>
-
