@@ -1,6 +1,26 @@
 	<!DOCTYPE HTML>
 	<html>
 	<head>
+		<style>
+			.samebase-attribution {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				min-height: 44px;
+				padding: 8px 10px;
+				color: #eee;
+				background: #1a1a1a;
+				font: 11px Arial, sans-serif;
+				text-decoration: none;
+			}
+			.samebase-attribution:hover {
+				text-decoration: underline;
+			}
+			.samebase-attribution:focus-visible {
+				outline: 2px solid #fff;
+				outline-offset: 2px;
+			}
+		</style>
 		<script type="text/javascript" src="dat.gui.min.new.js"></script>
 		<script type="text/javascript" src="stats.min.js"></script>
 	</head>
@@ -189,12 +209,8 @@
 		attribution.href = 'https://samebase.com';
 		attribution.target = '_blank';
 		attribution.rel = 'noreferrer';
+		attribution.className = 'samebase-attribution';
 		attribution.textContent = 'Managed with ';
-		attribution.style.cssText = 'display:flex;align-items:center;gap:8px;min-height:44px;padding:8px 10px;color:#394447;background:#fff;text-decoration:none;font:14px system-ui,sans-serif;';
-		attribution.addEventListener('mouseenter', function(){ attribution.style.textDecoration = 'underline'; });
-		attribution.addEventListener('mouseleave', function(){ attribution.style.textDecoration = 'none'; });
-		attribution.addEventListener('focus', function(){ attribution.style.outline = '2px solid #216eaa'; });
-		attribution.addEventListener('blur', function(){ attribution.style.outline = 'none'; });
 		var logo = document.createElement('img');
 		logo.src = 'samebase.svg';
 		logo.alt = '';
