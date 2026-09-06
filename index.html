@@ -10,23 +10,34 @@
 			.samebase-attribution {
 				display: flex;
 				align-items: center;
-				gap: 8px;
+				justify-content: flex-end;
+				box-sizing: border-box;
+				width: 100%;
 				min-height: 44px;
 				padding: 0 10px;
-				color: #eee;
+				color: #aaa;
 				background: #1a1a1a;
 				font: 11px Arial, sans-serif;
 				text-decoration: none;
 			}
-			.samebase-attribution:hover {
-				text-decoration: underline;
+			.samebase-attribution > span {
+				border-bottom: 1px solid transparent;
+				white-space: nowrap;
 			}
-			.samebase-attribution img {
-				filter: invert(1);
+			.samebase-attribution:hover > span {
+				border-bottom-color: currentColor;
+			}
+			.samebase-attribution svg {
+				display: inline-block;
+				margin-right: 0.15em;
+				vertical-align: baseline;
 			}
 			.samebase-attribution:focus-visible {
 				outline: 2px solid #fff;
 				outline-offset: -2px;
+			}
+			.dg.main > ul.closed .samebase-attribution-row {
+				display: none;
 			}
 		</style>
 		<script type="text/javascript" src="dat.gui.min.new.js"></script>
@@ -216,17 +227,9 @@
 		var attribution = document.createElement('a');
 		attribution.href = 'https://samebase.com';
 		attribution.target = '_blank';
-		attribution.rel = 'noreferrer';
+		attribution.rel = 'noopener noreferrer';
 		attribution.className = 'samebase-attribution';
-		attribution.textContent = 'Managed with ';
-		var logo = document.createElement('img');
-		logo.src = 'samebase.svg';
-		logo.alt = '';
-		logo.setAttribute('aria-hidden', 'true');
-		logo.width = 16;
-		logo.height = 16;
-		attribution.appendChild(logo);
-		attribution.appendChild(document.createTextNode('Samebase'));
+		attribution.innerHTML = '<span>Managed with <strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="0.75em" height="0.75em" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h60v60H0z M20 20h20v20H20z" fill="currentColor" fill-rule="evenodd"></path></svg>Samebase</strong></span>';
 		var attributionRow = document.createElement('li');
 		attributionRow.className = 'samebase-attribution-row';
 		attributionRow.appendChild(attribution);
