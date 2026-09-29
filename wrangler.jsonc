@@ -2,6 +2,7 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "spiro",
   "compatibility_date": "2026-05-14",
+  "previews": {},
   "assets": {
     "directory": ".",
     "not_found_handling": "none",
