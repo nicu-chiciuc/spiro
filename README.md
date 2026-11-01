@@ -11,10 +11,9 @@ The biggest problem was creating a easy-to-use interface and also smoothing the 
 
 The application doesn't use any build system.
 
-## Cloudflare Worker Previews
+## Deployment
 
-Workers Builds runs `pnpm run build`, then `pnpm run deploy` for the production
-branch or `pnpm run deploy:preview` for other branches.
-
-For the one-time Cloudflare setup, use the
-[Worker Previews migration guide](https://samebase.com/docs/cloudflare-previews-migration).
+Alchemy deploys the site from GitHub Actions. A push to `master` deploys
+[spiro.pfp.workers.dev](https://spiro.pfp.workers.dev), and each pull request
+gets a preview Worker that goes away when it closes. See `alchemy.run.ts` and
+`.github/workflows/alchemy.yml`.
